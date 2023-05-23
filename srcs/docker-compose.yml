@@ -1,0 +1,11 @@
+services:
+  mariadb:
+    image: "i-mariadb:1.0.0"
+    env_file:
+      - .env
+  wordpress:
+    image: "i-wordpress:1.0.0"
+    ports:
+     - "9000:9000"
+    env_file:
+      - .env
