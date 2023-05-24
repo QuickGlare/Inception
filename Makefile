@@ -1,19 +1,22 @@
 NAME = inception
-VERSION = 1.0.0
 
 $(NAME): run
 
-mariadb:
-	@echo Building MariaDB Image...
-	docker image build -t i-mariadb:${VERSION} ./srcs/mariadb
-
-wordpress:
-	@echo Building Wordpress Image...
-	docker image build -t i-wordpress:${VERSION} ./srcs/wordpress
-
-run: mariadb wordpress
+run:
 	docker compose -f srcs/docker-compose.yml up
 
-clean:
-	docker image rm i-mariadb:${VERSION}
-	docker image rm i-wordpress:${VERSION}
+down:
+	docker compose -f srcs/docker-compose.yml down
+
+vclean:
+	docker volume rm -f srcs_wordpress_data
+	docker volume rm -f srcs_mariadb_data
+
+iclean:
+	docker image rm i-mariadb:1.0.0
+	docker image rm i-wordpress:1.0.0
+	docker image rm i-nginx:1.0.0
+
+clean: vclean iclean
+
+fclean: down clean
