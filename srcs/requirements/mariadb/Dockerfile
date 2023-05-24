@@ -6,7 +6,7 @@ EXPOSE 3306
 RUN apk add mysql mysql-client
 
 # Copy the setup file into the Docker image
-COPY setup.sh /usr/local/bin/
+COPY tools/setup.sh /usr/local/bin/
 # Create the folder where the MariaDB Socket will be created
 RUN mkdir /run/mysqld
 
