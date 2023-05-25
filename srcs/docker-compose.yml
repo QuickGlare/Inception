@@ -35,3 +35,10 @@ services:
       - wordpress_data:/var/www/html/
     networks:
       - inception
+  adminer:
+    image: "i-adminer:1.0.0"
+    build: ./requirements/bonus/adminer
+    env_file:
+      - .env
+    networks:
+      - inception
