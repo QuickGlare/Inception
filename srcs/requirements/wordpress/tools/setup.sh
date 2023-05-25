@@ -26,6 +26,8 @@ else
   echo "[Inception-Wordpress] Setting up Wordpress website and users"
   php wp-cli.phar core install --url=$WORDPRESS_DOMAIN_NAME/ --title=$WORDPRESS_TITLE --admin_user=$WORDPRESS_ADMIN_USERNAME --admin_password=$WORDPRESS_ADMIN_PASSWORD --admin_email=$WORDPRESS_ADMIN_EMAIL --skip-email --allow-root
   php wp-cli.phar user create $WORDPRESS_USER_USERNAME $WORDPRESS_USER_EMAIL --role=author --user_pass=$WORDPRESS_USER_PASSWORD --allow-root
+  echo "[Inception-Wordpress] Installing WP Statistics"
+  php wp-cli.phar plugin install wp-statistics
 
   rm wp-cli.phar
 fi

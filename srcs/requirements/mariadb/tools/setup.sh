@@ -9,8 +9,6 @@ SQL_PID=$!
 
 sleep 1
 
-echo "[Inception-MariaDB] $MYSQL_USERNAME $MYSQL_PASSWORD"
-
 echo "[Inception-MariaDB] Creating user and databases"
 echo "CREATE USER '$MYSQL_USERNAME'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" | mysql -u root
 

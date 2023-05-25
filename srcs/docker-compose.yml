@@ -28,7 +28,7 @@ services:
     image: "i-nginx:1.0.0"
     build: ./requirements/nginx
     ports:
-     - "443:443"
+     - "4444:443"
     env_file:
       - .env
     volumes:
