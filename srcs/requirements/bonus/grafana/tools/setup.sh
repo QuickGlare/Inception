@@ -1,0 +1,1 @@
+grafana server --config /etc/grafana.ini --homepath /usr/share/grafana cfg:paths.data=/var/lib/grafana/data cfg:paths.plugins=/var/lib/grafana/plugins cfg:paths.provisioning=/var/lib/grafana/provisioning cfg:server.http_addr=0.0.0.0

@@ -17,6 +17,7 @@ iclean:
 	docker image rm i-wordpress:1.0.0
 	docker image rm i-nginx:1.0.0
 	docker image rm i-adminer:1.0.0
+	docker image rm i-grafana:1.0.0
 
 clean: vclean iclean
 
