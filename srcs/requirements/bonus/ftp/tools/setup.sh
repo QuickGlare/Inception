@@ -1,8 +1,11 @@
 #!/bin/sh
 
-echo "[Inception-FTP] Disabling anonymous users login"
-#sed "s/anonymous_enable=YES/anonymous_enable=NO/1" -i -r /etc/vsftpd/vsftpd.conf
-#sed "s/#local_enable/local_enable/1" -i -r /etc/vsftpd/vsftpd.conf
-#sed "s/#write_enable/write_enable/1" -i -r /etc/vsftpd/vsftpd.conf
-#sed "s/#chroot_local_user/chroot_local_user/1" -i -r /etc/vsftpd/vsftpd.conf
-#sed "s/#local_umask/local_umask/1" -i -r /etc/vsftpd/vsftpd.conf
+echo "[Inception-Ftp] Configuring vsftpd..."
+
+adduser $FTP_USR --disabled-password
+echo "$FTP_USR:$FTP_PWD" | /usr/sbin/chpasswd &> /dev/null
+chown -R $FTP_USR:$FTP_USR /var/www/html
+
+echo "[Inception-Ftp] Started on :21"
+
+/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf

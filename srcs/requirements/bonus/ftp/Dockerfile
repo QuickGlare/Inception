@@ -1,4 +1,11 @@
 FROM alpine:3.17
 
-EXPOSE 20
-RUN apk add vsftpd
+EXPOSE 21
+
+RUN apk update && apk add vsftpd
+
+COPY conf/vsftpd.conf /etc/
+
+COPY tools/setup.sh /usr/local/bin/
+
+ENTRYPOINT ["sh", "/usr/local/bin/setup.sh"]
