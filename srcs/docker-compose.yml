@@ -6,6 +6,7 @@ volumes:
   mariadb_data:
 
 services:
+
   mariadb:
     image: "i-mariadb:1.0.0"
     build: ./requirements/mariadb
@@ -15,6 +16,7 @@ services:
       - .env
     networks:
       - inception
+
   wordpress:
     image: "i-wordpress:1.0.0"
     build: ./requirements/wordpress
@@ -24,6 +26,7 @@ services:
       - wordpress_data:/var/www/html/
     networks:
       - inception
+
   nginx:
     image: "i-nginx:1.0.0"
     build: ./requirements/nginx
@@ -35,6 +38,7 @@ services:
       - wordpress_data:/var/www/html/
     networks:
       - inception
+
   adminer:
     image: "i-adminer:1.0.0"
     build: ./requirements/bonus/adminer
@@ -42,10 +46,22 @@ services:
       - .env
     networks:
       - inception
+
   grafana:
     image: "i-grafana:1.0.0"
     build: ./requirements/bonus/grafana
     env_file:
       - .env
+    networks:
+      - inception
+  
+  redis:
+    image: redis:6.2
+    build: ./requirements/bonus/redis
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/html/
     networks:
       - inception
