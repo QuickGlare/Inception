@@ -18,7 +18,7 @@ iclean:
 	docker image rm i-nginx:1.0.0
 	docker image rm i-adminer:1.0.0
 	docker image rm i-grafana:1.0.0
-	docker image rm redis:6.2
+	docker image rm i-redis:1.0.0
 
 clean: vclean iclean
 
