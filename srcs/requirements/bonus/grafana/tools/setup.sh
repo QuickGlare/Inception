@@ -1,4 +1,9 @@
-sed "s/database_name_here/$MYSQL_WORDPRESS_DATABASE/1" -i -r wp-config.php
+grafana cli plugins install grafana-piechart-panel
+grafana cli -config /etc/grafana.ini -homepath /usr/share/grafana admin reset-admin-password $GRAFANA_ADMIN_PASSWORD
+
+sed "s/MYSQL_WORDPRESS_DATABASE/$MYSQL_WORDPRESS_DATABASE/1" -i -r /var/lib/grafana/provisioning/datasources/wp_database_provider.yml
+sed "s/MYSQL_USERNAME/$MYSQL_USERNAME/1" -i -r /var/lib/grafana/provisioning/datasources/wp_database_provider.yml
+sed "s/MYSQL_PASSWORD/$MYSQL_PASSWORD/1" -i -r /var/lib/grafana/provisioning/datasources/wp_database_provider.yml
 
 grafana server \
     --config /etc/grafana.ini \
