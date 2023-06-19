@@ -68,4 +68,10 @@ services:
       - "40000-40005:40000-40005"
     networks:
       - inception
-    
+  static_website:
+      image: "i-static_website:1.0.0"
+      build: ./requirements/bonus/static_website/
+      ports:
+      - "3000:3000"
+      networks:
+      - inception  

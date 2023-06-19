@@ -20,6 +20,7 @@ iclean:
 	docker image rm i-grafana:1.0.0
 	docker image rm i-redis:1.0.0
 	docker image rm i-ftp:1.0.0
+	docker image rm i-static_website:1.0.0
 
 clean: vclean iclean
 
