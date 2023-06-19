@@ -24,3 +24,5 @@ iclean:
 clean: vclean iclean
 
 fclean: down clean
+
+re: fclean run
