@@ -1,7 +1,7 @@
 FROM alpine:3.17
 
 EXPOSE 443
-RUN apk add nginx openssl
+RUN apk add nginx openssl apache2-utils
 RUN mkdir -p /etc/ssl
 RUN mkdir -p /etc/nginx/http.d/
 
